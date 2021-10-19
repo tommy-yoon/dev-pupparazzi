@@ -1,6 +1,7 @@
 const express = require('express')
 const hbs = require('express-handlebars')
 
+const routes = require('./routes')
 const utils = require('./utils')
 
 const server = express()
@@ -14,12 +15,13 @@ server.engine('hbs', hbs({ extname: 'hbs' }))
 server.set('view engine', 'hbs')
 
 // Your routes/router(s) should go here
+server.use('/puppies', routes)
 
 module.exports = server
 
 // show puppies
 server.get('/', (req, res) => {
-  // read the puppies from the data.json file using fs.readFile
+  // get the puppies object from utils
   const puppies = utils.getPuppies((err, puppies) => {
     if (err) {
       res.status(500).render('error', {message:err.message})
@@ -27,6 +29,4 @@ server.get('/', (req, res) => {
       res.render('home', puppies)
     }
   })
-  // render the puppies using home
-  // res.send('Pupparazzi')
 })
