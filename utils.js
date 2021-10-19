@@ -7,9 +7,13 @@ function getPuppies(fnc) {
   fs.readFile(fileName, 'utf-8', (err, contents) => {
     if(err) {
       fnc(new Error("Failed in reading the file"))
-      return
     } else {
-      fnc(null, JSON.parse(contents))
+      try {
+        const jsonObject = JSON.parse(contents)
+        fnc(null, jsonObject)
+      } catch (parseError) {
+        fnc(new Error("Failed in parsing the JSON object"))
+      }
     }
   })
 }

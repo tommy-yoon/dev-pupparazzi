@@ -20,7 +20,13 @@ module.exports = server
 // show puppies
 server.get('/', (req, res) => {
   // read the puppies from the data.json file using fs.readFile
-  const puppies = utils.getPuppies()
+  const puppies = utils.getPuppies((err, puppies) => {
+    if (err) {
+      res.status(500).render('error', {message:err.message})
+    } else {
+      res.render('home', puppies)
+    }
+  })
   // render the puppies using home
-  res.send('Pupparazzi')
+  // res.send('Pupparazzi')
 })
