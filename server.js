@@ -1,6 +1,8 @@
 const express = require('express')
 const hbs = require('express-handlebars')
 
+const utils = require('./utils')
+
 const server = express()
 
 // Server configuration
@@ -14,3 +16,11 @@ server.set('view engine', 'hbs')
 // Your routes/router(s) should go here
 
 module.exports = server
+
+// show puppies
+server.get('/', (req, res) => {
+  // read the puppies from the data.json file using fs.readFile
+  const puppies = utils.getPuppies()
+  // render the puppies using home
+  res.send('Pupparazzi')
+})
