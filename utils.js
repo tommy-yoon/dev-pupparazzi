@@ -28,7 +28,7 @@ const utils = {
         jsonObj.puppies[oldPuppyIndex] = { ...jsonObj.puppies[oldPuppyIndex], ...newPuppy }
         let jsonStr = {}
         try {
-          jsonStr = JSON.stringify(jsonObj)
+          jsonStr = JSON.stringify(jsonObj, null, 2)
         } catch (error) {
           fnc(new Error("Failed in stringify the JSON object"))
         }
