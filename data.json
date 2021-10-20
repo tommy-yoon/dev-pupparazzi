@@ -8,7 +8,7 @@
       "breed": "Labrador"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Coco1",
       "owner": "Chloe1",
       "image": "/images/puppy2.jpg",
@@ -43,11 +43,23 @@
       "breed": "Labrador"
     },
     {
-      "id": "7",
+      "id": 7,
       "name": "Rockysdfsdfds",
       "owner": "Rickydsfdsafds",
       "image": "/images/puppy7.jpg",
       "breed": "Labradorsdfsdfds"
+    },
+    {
+      "name": "Baduggi",
+      "breed": "Jndo",
+      "owner": "Tommy",
+      "id": 8
+    },
+    {
+      "name": "Baduggi",
+      "breed": "Jndo",
+      "owner": "Tommy",
+      "id": 9
     }
   ]
 }
