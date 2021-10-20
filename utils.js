@@ -22,8 +22,6 @@ const utils = {
           fnc(new Error("Failed in parsing to the JSON object"))
         }
         // modify the target puppy
-        // fs.writeFile
-        // fnc(null)
         let oldPuppyIndex = jsonObj.puppies.findIndex((ele) => ele.id == newPuppy.id)
         jsonObj.puppies[oldPuppyIndex] = { ...jsonObj.puppies[oldPuppyIndex], ...newPuppy }
         let jsonStr = {}
