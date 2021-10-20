@@ -2,10 +2,24 @@ const fs = require('fs')
 const path = require('path')
 
 const fileName = path.join(__dirname, 'data.json')
+const uploadPath = path.join(__dirname, 'public', 'images')
 
 const utf8 = 'utf-8'
 
 const utils = {
+  uploadFile: function(file, fnc) {
+    uploadFilePth = path.join(uploadPath, file.name)
+
+    // Use the mv() method to place the file somewhere on your server
+    file.mv(uploadFilePth, function(err) {
+      if (err) {
+        fnc(new Error("Failed in uploading file"))
+      } else {
+        fnc(null)
+      }
+    });
+  },
+
   addPuppy: function(newPuppy, fnc) {
     // get puppies
     fs.readFile(fileName, utf8, (err, contents) => {

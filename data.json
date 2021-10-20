@@ -9,10 +9,10 @@
     },
     {
       "id": 2,
-      "name": "Coco1",
-      "owner": "Chloe1",
+      "name": "Coco",
+      "owner": "Chloe",
       "image": "/images/puppy2.jpg",
-      "breed": "Labrador1"
+      "breed": "Labrador"
     },
     {
       "id": 3,
@@ -44,22 +44,17 @@
     },
     {
       "id": 7,
-      "name": "Rockysdfsdfds",
-      "owner": "Rickydsfdsafds",
+      "name": "Rocky",
+      "owner": "Ricky",
       "image": "/images/puppy7.jpg",
-      "breed": "Labradorsdfsdfds"
+      "breed": "Labrador"
     },
     {
       "name": "Baduggi",
       "breed": "Jndo",
       "owner": "Tommy",
+      "image": "/images/face.png",
       "id": 8
-    },
-    {
-      "name": "Baduggi",
-      "breed": "Jndo",
-      "owner": "Tommy",
-      "id": 9
     }
   ]
 }

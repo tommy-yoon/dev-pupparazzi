@@ -2,6 +2,8 @@ const express = require('express')
 const utils = require('./utils')
 const router = express.Router()
 
+const imagePath = '/images/'
+
 module.exports = router
 
 router.post('/:id/edit', (req, res) => {
@@ -38,11 +40,24 @@ router.post('/add', (req, res) => {
     "breed": breed,
     "owner": owner,
   }
+  if (!req.files || Object.keys(req.files).length === 0) {
+    res.status(400).render('error', { message: 'Uploaded file is missing' });
+  }
+  newPuppy["image"] = imagePath + req.files.image.name
+
   utils.addPuppy(newPuppy, (err, id) => {
     if (err) {
       res.status(500).render('error', { message: err.message })
     } else {
-      res.redirect('/puppies/' + id)
+      // saving image file
+      const imageFile = req.files.image;
+      utils.uploadFile(imageFile, (err) => {
+        if (err) {
+          res.status(500).render('error', { message: err.message })
+        } else {
+          res.redirect('/puppies/' + id)
+        }
+      })
     }
   })
 })
