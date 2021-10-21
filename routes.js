@@ -6,6 +6,18 @@ const imagePath = '/images/'
 
 module.exports = router
 
+router.get('/:id/delete', (req, res) => {
+  const id = Number(req.params.id)
+
+  utils.deletePuppy(id, (err) => {
+    if (err) {
+      res.status(500).render('error', { message: err.message })
+    } else {
+      res.redirect('/')
+    }
+  })
+})
+
 router.post('/:id/edit', (req, res) => {
   const id = Number(req.params.id)
   const name = req.body.name

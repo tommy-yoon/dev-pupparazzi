@@ -7,6 +7,40 @@ const uploadPath = path.join(__dirname, 'public', 'images')
 const utf8 = 'utf-8'
 
 const utils = {
+  deletePuppy: function(id, fnc) {
+    // get puppies
+    fs.readFile(fileName, utf8, (err, contents) => {
+      if (err) {
+        // error in reading the file
+        fnc(new Error("Failed in reading the file"))
+      } else {
+        let jsonObj = {}
+        try {
+          // error in parsing the string data into a JSON object
+          jsonObj = JSON.parse(contents)
+        } catch (parseError) {
+          fnc(new Error("Failed in parsing to the JSON object"))
+        }
+        // found out the target puppy in the object array
+        let oldPuppyIndex = jsonObj.puppies.findIndex((ele) => ele.id == id)
+        jsonObj.puppies.splice(oldPuppyIndex,1)
+        let jsonStr = {}
+        try {
+          jsonStr = JSON.stringify(jsonObj, null, 2)
+        } catch (error) {
+          fnc(new Error("Failed in stringify the JSON object"))
+        }
+        fs.writeFile(fileName, jsonStr, utf8, (err) => {
+          if (err) {
+            fnc(new Error("Failed in writing the file"))
+          } else {
+            fnc(null)
+          }
+        })
+      }
+    })
+  },
+
   uploadFile: function(file, fnc) {
     uploadFilePth = path.join(uploadPath, file.name)
 
