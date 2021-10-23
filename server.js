@@ -27,7 +27,7 @@ module.exports = server
 // show puppies
 server.get('/', (req, res) => {
   // get the puppies object from utils
-  const puppies = utils.getPuppies((err, puppies) => {
+  utils.getPuppies((err, puppies) => {
     if (err) {
       res.status(500).render('error', {message:err.message})
     } else {
