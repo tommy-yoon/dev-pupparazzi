@@ -52,9 +52,9 @@ router.post('/add', (req, res) => {
     "breed": breed,
     "owner": owner,
   }
-  
+
   if (!req.files || Object.keys(req.files).length === 0) {
-    res.status(400).render('error', { msg: 'Uploaded file is missing' });
+    res.status(400).render('error', { message: 'Uploaded file is missing' });
     return
   }
   newPuppy["image"] = imagePath + req.files.image.name
