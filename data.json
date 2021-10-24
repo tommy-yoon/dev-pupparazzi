@@ -55,6 +55,13 @@
       "owner": "Tommy",
       "image": "/images/face.png",
       "id": 8
+    },
+    {
+      "name": "Dragon",
+      "breed": "Blue Dragon",
+      "owner": "Gorreti",
+      "image": "/images/images.jfif",
+      "id": 9
     }
   ]
 }
