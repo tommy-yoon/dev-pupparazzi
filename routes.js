@@ -18,27 +18,6 @@ router.get('/:id/delete', (req, res) => {
   })
 })
 
-router.post('/:id/edit', (req, res) => {
-  const id = Number(req.params.id)
-  const name = req.body.name
-  const breed = req.body.breed
-  const owner = req.body.owner
-  const newPuppy = {
-    "id": id,
-    "name": name,
-    "breed": breed,
-    "owner": owner,
-  }
-
-  utils.updatePuppy(newPuppy, (err) => {
-    if (err) {
-      res.status(500).render('error', { message: err.message })
-    } else {
-      res.redirect('/puppies/' + id)
-    }
-  })
-})
-
 router.get('/add', (req, res) => {
   res.render('add')
 })
@@ -52,13 +31,13 @@ router.post('/add', (req, res) => {
     "breed": breed,
     "owner": owner,
   }
-
+  
   if (!req.files || Object.keys(req.files).length === 0) {
     res.status(400).render('error', { message: 'Uploaded file is missing' });
     return
   }
   newPuppy["image"] = imagePath + req.files.image.name
-
+  
   // storing data
   utils.addPuppy(newPuppy, (err, id) => {
     if (err) {
@@ -84,6 +63,27 @@ router.get('/:id/edit', (req, res) => {
       res.status(500).render('error', { message: err.message })
     } else {
       res.render('edit', puppy)
+    }
+  })
+})
+
+router.post('/:id/edit', (req, res) => {
+  const id = Number(req.params.id)
+  const name = req.body.name
+  const breed = req.body.breed
+  const owner = req.body.owner
+  const newPuppy = {
+    "id": id,
+    "name": name,
+    "breed": breed,
+    "owner": owner,
+  }
+
+  utils.updatePuppy(newPuppy, (err) => {
+    if (err) {
+      res.status(500).render('error', { message: err.message })
+    } else {
+      res.redirect('/puppies/' + id)
     }
   })
 })
