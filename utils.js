@@ -115,8 +115,10 @@ const utils = {
           fnc(new Error("Failed in parsing to the JSON object"))
         }
         // modify the target puppy
-        let oldPuppyIndex = jsonObj.puppies.findIndex((ele) => ele.id == newPuppy.id)
-        jsonObj.puppies[oldPuppyIndex] = { ...jsonObj.puppies[oldPuppyIndex], ...newPuppy }
+        // let oldPuppyIndex = jsonObj.puppies.findIndex((ele) => ele.id == newPuppy.id)
+        // jsonObj.puppies[oldPuppyIndex] = { ...jsonObj.puppies[oldPuppyIndex], ...newPuppy }
+        const oldPuppy = jsonObj.puppies.find((ele) => ele.id == newPuppy.id)
+        oldPuppy = {...oldPuppy, ...newPuppy}
         let jsonStr = {}
         try {
           jsonStr = JSON.stringify(jsonObj, null, 2)
