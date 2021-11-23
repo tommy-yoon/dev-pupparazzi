@@ -1,6 +1,6 @@
 const utils = require('../utils')
 
-test('test getPuppies - not null', (done) => {
+test('getPuppies - not null', (done) => {
   const puppies = utils.getPuppies((err, obj) => {
     expect(err).toBeNull()
     expect(obj).not.toBeNull()
@@ -8,7 +8,7 @@ test('test getPuppies - not null', (done) => {
   })
 })
 
-test('test getPuppies - type', (done) => {
+test('getPuppies - type', (done) => {
   const puppies = utils.getPuppies((err, obj) => {
     expect(err).toBeNull()
     expect(obj).not.toBeNull()
@@ -17,7 +17,7 @@ test('test getPuppies - type', (done) => {
   })
 })
 
-test('test getPuppies - have property', (done) => {
+test('getPuppies - have property', (done) => {
   const puppies = utils.getPuppies((err, obj) => {
     expect(err).toBeNull()
     expect(obj).not.toBeNull()
@@ -26,16 +26,16 @@ test('test getPuppies - have property', (done) => {
   })
 })
 
-test('test getPuppies - subset', (done) => {
+test('getPuppies - subset', (done) => {
   const puppies = utils.getPuppies((err, obj) => {
     expect(err).toBeNull()
     expect(obj).not.toBeNull()
-    expect(obj.puppies[0]).toMatchObject({id:1})
+    expect(obj.puppies[0]).toMatchObject({ id: 1 })
     done()
   })
 })
 
-test('test getPuppy - not null', (done) => {
+test('getPuppy - not null', (done) => {
   const id = 1
   const puppy = utils.getPuppy(id, (err, obj) => {
     expect(err).toBeNull()
@@ -44,7 +44,7 @@ test('test getPuppy - not null', (done) => {
   })
 })
 
-test('test getPuppy - type', (done) => {
+test('getPuppy - type', (done) => {
   const id = 1
   const puppy = utils.getPuppy(id, (err, obj) => {
     expect(err).toBeNull()
@@ -54,7 +54,7 @@ test('test getPuppy - type', (done) => {
   })
 })
 
-test('test getPuppy - have property', (done) => {
+test('getPuppy - have property', (done) => {
   const id = 1
   const puppy = utils.getPuppy(id, (err, obj) => {
     expect(err).toBeNull()
@@ -67,12 +67,12 @@ test('test getPuppy - have property', (done) => {
   })
 })
 
-test('test getPuppy - subset', (done) => {
+test('getPuppy - subset', (done) => {
   const id = 1
   const puppy = utils.getPuppy(id, (err, obj) => {
     expect(err).toBeNull()
     expect(obj).not.toBeNull()
-    expect(obj).toMatchObject({name:"Fido"})
+    expect(obj).toMatchObject({ name: 'Fido' })
     done()
   })
 })

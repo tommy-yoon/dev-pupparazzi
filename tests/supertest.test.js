@@ -5,7 +5,7 @@ const server = require('../server')
 
 // const router = require('./routes')
 
-test('test Get /', (done) => {
+test('Get /', (done) => {
   request(server)
     .get('/')
     .expect(200)
@@ -16,7 +16,7 @@ test('test Get /', (done) => {
     })
 })
 
-test('test Get /puppies/:id', (done) => {
+test('Get /puppies/:id', (done) => {
   request(server)
     .get('/puppies/1')
     .expect(200)
@@ -25,12 +25,12 @@ test('test Get /puppies/:id', (done) => {
       expect(res.text).toMatch('Pupparazzi')
       done()
     })
-  })
+})
 
-  // testing using cheerio
-  // const $ = cheerio.load(res.text)
-  test('test GET / using cheerio', (done) => {
-    request(server)
+// testing using cheerio
+// const $ = cheerio.load(res.text)
+test('GET / using cheerio', (done) => {
+  request(server)
     .get('/')
     .end((err, res) => {
       expect(err).toBeNull()
@@ -40,4 +40,4 @@ test('test Get /puppies/:id', (done) => {
       // expect(artistText).toMatch('')
       done()
     })
-  })
+})

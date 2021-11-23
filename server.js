@@ -17,7 +17,7 @@ server.set('view engine', 'hbs')
 
 // file upload
 // default options
-server.use(fileUpload());
+server.use(fileUpload())
 
 // Your routes/router(s) should go here
 server.use('/puppies', routes)
@@ -29,7 +29,7 @@ server.get('/', (req, res) => {
   // get the puppies object from utils
   utils.getPuppies((err, puppies) => {
     if (err) {
-      res.status(500).render('error', {message:err.message})
+      res.status(500).render('error', { message: err.message })
     } else {
       res.render('home', puppies)
     }
