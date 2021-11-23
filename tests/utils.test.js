@@ -1,7 +1,7 @@
 const utils = require('../utils')
 
 test('getPuppies - not null', (done) => {
-  const puppies = utils.getPuppies((err, obj) => {
+  utils.getPuppies((err, obj) => {
     expect(err).toBeNull()
     expect(obj).not.toBeNull()
     done()
@@ -9,7 +9,7 @@ test('getPuppies - not null', (done) => {
 })
 
 test('getPuppies - type', (done) => {
-  const puppies = utils.getPuppies((err, obj) => {
+  utils.getPuppies((err, obj) => {
     expect(err).toBeNull()
     expect(obj).not.toBeNull()
     expect(obj).toBeInstanceOf(Object)
@@ -18,7 +18,7 @@ test('getPuppies - type', (done) => {
 })
 
 test('getPuppies - have property', (done) => {
-  const puppies = utils.getPuppies((err, obj) => {
+  utils.getPuppies((err, obj) => {
     expect(err).toBeNull()
     expect(obj).not.toBeNull()
     expect(obj).toHaveProperty('puppies')
@@ -27,7 +27,7 @@ test('getPuppies - have property', (done) => {
 })
 
 test('getPuppies - subset', (done) => {
-  const puppies = utils.getPuppies((err, obj) => {
+  utils.getPuppies((err, obj) => {
     expect(err).toBeNull()
     expect(obj).not.toBeNull()
     expect(obj.puppies[0]).toMatchObject({ id: 1 })
@@ -37,7 +37,7 @@ test('getPuppies - subset', (done) => {
 
 test('getPuppy - not null', (done) => {
   const id = 1
-  const puppy = utils.getPuppy(id, (err, obj) => {
+  utils.getPuppy(id, (err, obj) => {
     expect(err).toBeNull()
     expect(obj).not.toBeNull()
     done()
@@ -46,7 +46,7 @@ test('getPuppy - not null', (done) => {
 
 test('getPuppy - type', (done) => {
   const id = 1
-  const puppy = utils.getPuppy(id, (err, obj) => {
+  utils.getPuppy(id, (err, obj) => {
     expect(err).toBeNull()
     expect(obj).not.toBeNull()
     expect(obj).toBeInstanceOf(Object)
@@ -56,7 +56,7 @@ test('getPuppy - type', (done) => {
 
 test('getPuppy - have property', (done) => {
   const id = 1
-  const puppy = utils.getPuppy(id, (err, obj) => {
+  utils.getPuppy(id, (err, obj) => {
     expect(err).toBeNull()
     expect(obj).not.toBeNull()
     expect(obj).toHaveProperty('name')
@@ -69,7 +69,7 @@ test('getPuppy - have property', (done) => {
 
 test('getPuppy - subset', (done) => {
   const id = 1
-  const puppy = utils.getPuppy(id, (err, obj) => {
+  utils.getPuppy(id, (err, obj) => {
     expect(err).toBeNull()
     expect(obj).not.toBeNull()
     expect(obj).toMatchObject({ name: 'Fido' })
