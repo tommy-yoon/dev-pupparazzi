@@ -2,7 +2,7 @@
   "puppies": [
     {
       "id": 1,
-      "name": "Fido",
+      "name": "Fido1",
       "owner": "Fred",
       "image": "/images/puppy1.jpg",
       "breed": "Labrador"
@@ -69,6 +69,13 @@
       "owner": "Taeil",
       "image": "/images/cat1.jpg",
       "id": 10
+    },
+    {
+      "name": "sdfdsds",
+      "breed": "sfds",
+      "owner": "sfds",
+      "image": "/images/images.jfif",
+      "id": 11
     }
   ]
 }

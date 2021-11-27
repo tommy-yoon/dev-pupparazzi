@@ -27,24 +27,24 @@ router.post('/add', (req, res) => {
   const breed = req.body.breed
   const owner = req.body.owner
   const newPuppy = {
-    "name": name,
-    "breed": breed,
-    "owner": owner,
+    name: name,
+    breed: breed,
+    owner: owner
   }
-  
+
   if (!req.files || Object.keys(req.files).length === 0) {
-    res.status(400).render('error', { message: 'Uploaded file is missing' });
+    res.status(400).render('error', { message: 'Uploaded file is missing' })
     return
   }
-  newPuppy["image"] = imagePath + req.files.image.name
-  
+  newPuppy.image = imagePath + req.files.image.name
+
   // storing data
   utils.addPuppy(newPuppy, (err, id) => {
     if (err) {
       res.status(500).render('error', { message: err.message })
     } else {
       // saving a physical(binary) image file
-      const imageFile = req.files.image;
+      const imageFile = req.files.image
       utils.uploadFile(imageFile, (err) => {
         if (err) {
           res.status(500).render('error', { message: err.message })
@@ -57,7 +57,7 @@ router.post('/add', (req, res) => {
 })
 
 router.get('/:id/edit', (req, res) => {
-  const id = req.params.id
+  const id = Number(req.params.id)
   utils.getPuppy(id, (err, puppy) => {
     if (err) {
       res.status(500).render('error', { message: err.message })
@@ -73,10 +73,10 @@ router.post('/:id/edit', (req, res) => {
   const breed = req.body.breed
   const owner = req.body.owner
   const newPuppy = {
-    "id": id,
-    "name": name,
-    "breed": breed,
-    "owner": owner,
+    id: id,
+    name: name,
+    breed: breed,
+    owner: owner
   }
 
   utils.updatePuppy(newPuppy, (err) => {
@@ -89,7 +89,7 @@ router.post('/:id/edit', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-  const id = req.params.id
+  const id = Number(req.params.id)
   utils.getPuppy(id, (err, puppy) => {
     if (err) {
       res.status(500).render('error', { message: err.message })
